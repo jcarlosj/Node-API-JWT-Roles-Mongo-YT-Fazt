@@ -19,6 +19,7 @@ const infoApp = {
 }
 
 app .use( morgan( 'dev' ) );
+app .use( express .json() );
 
 // Routes
 app .get( '/', ( request, response ) => {
