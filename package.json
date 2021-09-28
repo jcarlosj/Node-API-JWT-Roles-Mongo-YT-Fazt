@@ -4,7 +4,9 @@
   "description": "Rest API con JWT, Autenticacion (Usuarios/Roles), MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node ./src/index.js"
+    "build": "babel ./src --out-dir build",
+    "dev": "nodemon ./src/index.js --exec babel-node",
+    "start": "node ./build/index.js"
   },
   "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co>",
   "license": "ISC",
