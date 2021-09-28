@@ -1,9 +1,19 @@
 import express from 'express';
 import morgan from 'morgan';
+import pkg from '../package.json';
 
 const
-    app = express(),
-    infoApp = { author: 'Juan Carlos Jiménez Gutiérrez', description: "Rest API con JWT, Autenticacion (Usuarios/Roles), MongoDB", version: '1.0.0' };
+    app = express();
+
+// Establecemos valores por defecto para Express
+app .set( 'pkg', pkg );
+
+const infoApp = {
+    name: app .get( 'pkg' ) .name,
+    author: app .get( 'pkg' ) .author,
+    description: app .get( 'pkg' ) .description,
+    version: app .get( 'pkg' ) .version
+}
 
 app .use( morgan( 'dev' ) );
 
