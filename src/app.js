@@ -26,6 +26,6 @@ app .get( '/', ( request, response ) => {
     console .log( infoApp );
 });
 
-app .use( productRoutes );
+app .use( '/products', productRoutes );
 
 export default app;
