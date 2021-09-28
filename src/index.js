@@ -1,6 +1,6 @@
-import express from 'express';
+import app from './app';
 
-const app = express();
+const port = 4000;
 
-app .listen( 3000 );
-console.log( 'Server listen on port: ', 3000 );
+app .listen( port );
+console.log( 'Server listen on port: ', port );
