@@ -3,6 +3,7 @@ import morgan from 'morgan';
 
 import pkg from '../package.json';
 
+import authRoutes from './routes/auth.routes';
 import productRoutes from './routes/product.routes';
 
 const
@@ -27,6 +28,7 @@ app .get( '/', ( request, response ) => {
     console .log( infoApp );
 });
 
-app .use( '/products', productRoutes );
+app .use( '/api/auth', authRoutes );
+app .use( '/api/products', productRoutes );
 
 export default app;
