@@ -14,17 +14,28 @@ export const createProduct = async ( request, response ) => {
     const newProduct = new Product({ name, category, price, imgUrl });
     const productSaved = await newProduct .save();
 
-    response .status( 201 ) .json({ method: 'POST', path: '/products/:id', msg: 'Crea un producto', product: productSaved });
+    response .status( 201 ) .json({ method: 'POST', path: '/products/:id', msg: 'Crea un producto', createdProduct: productSaved });
 }
 
-export const getProductById = ( request, response ) => {
-    response .json({ method: 'GET', path: '/products/:id', msg: 'Obtiene un producto' });
+export const getProductById = async ( request, response ) => {
+    const
+        productId = request .params .productId,
+        product = await Product .findById( productId );
+    response .status( 200 ) .json({ method: 'GET', path: `/products/${ productId }`, msg: 'Obtiene un producto', product: product });
 }
 
-export const updateProductById = ( request, response ) => {
-    response .json({ method: 'PUT', path: '/products/:id', msg: 'Actualiza un producto' });
+export const updateProductById = async ( request, response ) => {
+    const
+        productId = request .params .productId,
+        updatedProduct = await Product .findByIdAndUpdate( productId, request .body, { new: true } );
+
+    response .status( 200 ) .json({ method: 'PUT', path: `/products/${ productId }`, msg: 'Actualiza un producto', updatedProduct: updatedProduct });   // status: 204
 }
 
-export const deleteProductById = ( request, response ) => {
-    response .json({ method: 'DELETE', path: '/products/:id', msg: 'Elimina un producto' });
+export const deleteProductById = async ( request, response ) => {
+    const
+        { productId } = request .params,
+        deletedProduct = await Product .findByIdAndDelete( productId );
+
+    response .status( 200 ) .json({ method: 'DELETE', path: `/products/${ productId }`, msg: 'Elimina un producto', deletedProduct: deletedProduct });  // status: 204
 }
