@@ -9,7 +9,39 @@
 			"name": "Products",
 			"item": [
 				{
-					"name": "http://localhost:4000/products",
+					"name": "/products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Laptop ASUS\",\n    \"category\": \"tecnology\",\n    \"price\": 799.99,\n    \"imgUrl\": \"https://ss628.liverpool.com.mx/xl/1103671325.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -38,7 +70,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:4000/products",
+					"name": "/products/:id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -56,14 +88,75 @@
 							"raw": "{\n    \"name\": \"Laptop ASUS\",\n    \"category\": \"tecnology\",\n    \"price\": 799.99,\n    \"imgUrl\": \"https://ss628.liverpool.com.mx/xl/1103671325.jpg\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4000/products",
+							"raw": "http://localhost:4000/products/615293c1362d01af5aeb1653",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "4000",
 							"path": [
-								"products"
+								"products",
+								"615293c1362d01af5aeb1653"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Laptop ASUS VivoBook\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/products/615293c1362d01af5aeb1653",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"products",
+								"615293c1362d01af5aeb1653"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Laptop ASUS\",\n    \"category\": \"tecnology\",\n    \"price\": 799.99,\n    \"imgUrl\": \"https://ss628.liverpool.com.mx/xl/1103671325.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/products/615293c1362d01af5aeb1653",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"products",
+								"615293c1362d01af5aeb1653"
 							]
 						}
 					},
