@@ -2,12 +2,15 @@ import express from 'express';
 import morgan from 'morgan';
 
 import pkg from '../package.json';
+import { createDefaultRoles } from './libs/setup'
 
 import authRoutes from './routes/auth.routes';
 import productRoutes from './routes/product.routes';
 
 const
     app = express();
+
+createDefaultRoles();
 
 // Establecemos valores por defecto para Express
 app .set( 'pkg', pkg );
