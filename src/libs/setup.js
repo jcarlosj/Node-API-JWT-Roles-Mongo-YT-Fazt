@@ -9,9 +9,10 @@ export const createDefaultRoles = async () => {
 
         // Crea roles por defecto
         const roles = await Promise.all([
+            new Role({ name: 'superadmin' }).save(),
             new Role({ name: 'admin' }).save(),
-            new Role({ name: 'vendedor' }).save(),
-            new Role({ name: 'comprador' }).save()
+            new Role({ name: 'moderator' }).save(),
+            new Role({ name: 'user' }).save()
         ]);
 
         console.log( roles );
