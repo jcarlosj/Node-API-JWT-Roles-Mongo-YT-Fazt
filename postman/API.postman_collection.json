@@ -212,7 +212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"milo\",\n    \"email\": \"milo@correo.co\",\n    \"password\": \"123456\"\n}"
+							"raw": "{\n    \"username\": \"fdhgrthydtr\",\n    \"email\": \"fdhgrthydtr@correo.co\",\n    \"password\": \"123456\",\n    \"roles\": [ \"sumerce\" ]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:4000/api/auth/signup",
