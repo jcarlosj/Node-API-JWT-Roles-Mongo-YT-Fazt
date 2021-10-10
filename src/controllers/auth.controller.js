@@ -53,7 +53,16 @@ export const signIn = async ( request, response ) => {
 export const signUp = async ( request, response ) => {
     const { username, email, password, roles } = request .body;
 
-    // TODO: Verificamos si el usuario existe antes de crear el nuevo usuario
+    let user = await User .findOne({ email });  // Query using Mongoose
+
+    /** Verifica si el usuario EXISTE */
+    if( user ) {
+        return response .status( 400 ) .json({
+            method: 'POST',
+            path: `/api/auth/signup`,
+            msg: 'User already exists!',
+        });
+    }
 
     /** Inserta la data usando el Modelo/Schema Mongoose */
     const newUser = new User({
