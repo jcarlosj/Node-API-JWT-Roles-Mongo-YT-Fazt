@@ -7,8 +7,47 @@ import User from '../models/User';
 import Role from '../models/Role';
 
 // Controller Auth
-export const signIn = ( request, response ) => {
-    response .json( 'singIn' );
+export const signIn = async ( request, response ) => {
+
+    const userFount = await User .findOne({ email: request .body .email }) .populate( 'roles' );
+
+    /** Verifica si el usuario NO EXISTE */
+    if( ! userFount ) {
+        console .log( 'User not found!' );
+        return response .json({
+            method: 'POST',
+            path: `/api/auth/signin`,
+            msg: 'User not found!',
+        });
+    }
+
+    console .log( userFount );
+
+    /** Consulta que compara si la contrasena enviada es igual a la del usuario encontrado */
+    const matchPassword = await User .comparePassword( request .body .password, userFount .password );
+
+    /** Verifica la cohincidencia de las contrasenias */
+    if( ! matchPassword ) return response . status( 401 ) .json({
+        method: 'POST',
+        path: `/api/auth/signin`,
+        msg: 'Invalid password!',
+    });
+
+    /** Crea el Token usando JWT */
+    const token = jwt .sign(
+        { id: userFount._id },
+        app.SECRET,
+        { expiresIn: 86400 /** 24h */ }
+    );
+    console.log( 'token: ', token );
+
+    response .json({      // status: 204
+        method: 'POST',
+        path: `/api/auth/signin`,
+        msg: 'Authenticated user!',
+        userFount,
+        token
+    });
 }
 
 export const signUp = async ( request, response ) => {
@@ -52,12 +91,12 @@ export const signUp = async ( request, response ) => {
         app.SECRET,
         { expiresIn: 86400 /** 24h */ }
     );
-    console.log( token );
+    console.log( 'token: ', token );
 
     response .json({      // status: 204
         method: 'POST',
         path: `/api/auth/signup`,
-        msg: 'Sign Up',
+        msg: 'Registered user!',
         newUser,
         token
     });
