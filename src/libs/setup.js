@@ -12,7 +12,7 @@ export const createDefaultRoles = async () => {
             new Role({ name: 'superadmin' }).save(),
             new Role({ name: 'admin' }).save(),
             new Role({ name: 'moderator' }).save(),
-            new Role({ name: 'user' }).save()
+            new Role({ name: 'user', isDefault: true }).save()
         ]);
 
         console.log( roles );

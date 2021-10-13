@@ -2,7 +2,11 @@ import { Schema, model } from 'mongoose';
 
 const
     roleSchema = new Schema({
-        name: String
+        name: String,
+        isDefault: {
+            type: Boolean,
+            default: false
+        }
     }, {
         timestamps: true,
         versionKey: false

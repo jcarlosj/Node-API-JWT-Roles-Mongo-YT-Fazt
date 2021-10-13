@@ -77,7 +77,7 @@ export const signUp = async ( request, response ) => {
 
         // * (2) Verifica si encontro roles existentes en el sistema
         if( foundRoles .length <= 0 ) {
-            const role = await Role .findOne({ name: 'user' });
+            const role = await Role .findOne({ isDefault: true });
             newUser.roles = [ role._id ];
         }
         else {  // * (2) Si no existen, agrega el rol por defecto
