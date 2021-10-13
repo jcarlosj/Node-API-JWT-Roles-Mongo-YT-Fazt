@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import * as productController from '../controllers/product.controller';
 
+import { verifyToken } from '../middlewares';
+
 const router = Router();
 
 // Define rutas de productos
-router .get( '/', productController .getProducts );
-router .post( '/', productController .createProduct );
+router .post( '/', verifyToken, productController .createProduct );
 router .get( '/:productId', productController .getProductById );
-router .put( '/:productId', productController .updateProductById );
-router .delete( '/:productId', productController .deleteProductById );
+router .put( '/:productId', verifyToken, productController .updateProductById );
+router .delete( '/:productId', verifyToken, productController .deleteProductById );
 
 export default router;
