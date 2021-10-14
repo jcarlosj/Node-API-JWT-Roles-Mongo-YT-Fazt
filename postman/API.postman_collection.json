@@ -50,6 +50,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjc1YTdhNzMxNDY4NTI5MDlkOTc0YyIsImlhdCI6MTYzNDE2MzM5OCwiZXhwIjoxNjM0MjQ5Nzk4fQ.AlYBWj5gbvGD4Yvu9DcfrRDzH7nmxeAMSIjtzfbXk4Q",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -57,12 +62,12 @@
 							"raw": "{\n    \"name\": \"Laptop Lenovo\",\n    \"category\": \"tecnology\",\n    \"price\": 799.99,\n    \"imgUrl\": \"https://ss628.liverpool.com.mx/xl/1103671325.jpg\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/products",
+							"raw": "http://localhost:4001/api/products",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "4001",
 							"path": [
 								"api",
 								"products"
@@ -145,6 +150,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjc1YTdhNzMxNDY4NTI5MDlkOTc0YyIsImlhdCI6MTYzNDE2MzM5OCwiZXhwIjoxNjM0MjQ5Nzk4fQ.AlYBWj5gbvGD4Yvu9DcfrRDzH7nmxeAMSIjtzfbXk4Q",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -152,16 +162,16 @@
 							"raw": "{\n    \"name\": \"Laptop ASUS\",\n    \"category\": \"tecnology\",\n    \"price\": 799.99,\n    \"imgUrl\": \"https://ss628.liverpool.com.mx/xl/1103671325.jpg\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:4000/api/products/6153b7b37187c4701cef32f2",
+							"raw": "http://localhost:4001/api/products/6154e9a6ae8e2770be9a5b96",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "4001",
 							"path": [
 								"api",
 								"products",
-								"6153b7b37187c4701cef32f2"
+								"6154e9a6ae8e2770be9a5b96"
 							]
 						}
 					},
@@ -183,13 +193,17 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@correo.co\",\n    \"password\": \"13579\"\n}"
+						},
 						"url": {
-							"raw": "http://localhost:4000/api/auth/signin",
+							"raw": "http://localhost:4001/api/auth/signin",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "4000",
+							"port": "4001",
 							"path": [
 								"api",
 								"auth",
@@ -212,7 +226,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"fdhgrthydtr\",\n    \"email\": \"fdhgrthydtr@correo.co\",\n    \"password\": \"123456\",\n    \"roles\": [ \"sumerce\" ]\n}"
+							"raw": "{\n    \"username\": \"superadmin1\",\n    \"email\": \"superadmin@correo.co\",\n    \"password\": \"13579\",\n    \"roles\": [ \"superadmin\" ]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:4000/api/auth/signup",
@@ -225,6 +239,46 @@
 								"api",
 								"auth",
 								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjgzYjNiOTlkNmI1MzQxZGY2NWEwMyIsImlhdCI6MTYzNDIyMDg1OSwiZXhwIjoxNjM0MzA3MjU5fQ.6HCvZTzIMzFDag5lFAens7TQwqgv6JEDkVRmyw-iVG4",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"superadmin\",\n    \"email\": \"superadmin@correo.co\",\n    \"roles\": [ \"moderator\" ]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"users"
 							]
 						}
 					},
