@@ -5,6 +5,7 @@ import pkg from '../package.json';
 import { createDefaultRoles } from './libs/setup'
 
 import authRoutes from './routes/auth.routes';
+import userRoutes from './routes/user.routes';
 import productRoutes from './routes/product.routes';
 
 const
@@ -32,6 +33,7 @@ app .get( '/', ( request, response ) => {
 });
 
 app .use( '/api/auth', authRoutes );
+app .use( '/api/users', userRoutes );
 app .use( '/api/products', productRoutes );
 
 export default app;

@@ -48,6 +48,27 @@ export const verifyToken = async ( request, response, next ) => {
 
 }
 
+export const isSuperAdmin = async ( request, response, next ) => {
+    const
+        user = await User .findById( request.id ),
+        roles = await Role .find({ _id: { $in: user.roles } } );
+
+    // ? Itera los roles para validar que el rol exista
+    for( let i = 0; i < roles .length; i++ ) {
+        if( roles[ i ] .name === 'superadmin' ) {
+            next();
+            return;
+        }
+    }
+
+    return response .status( 403 ) .json({
+        error: {
+            message: 'Requires superadmin role'
+        }
+    });
+
+}
+
 export const isAdmin = async ( request, response, next ) => {
     const
         user = await User .findById( request.id ),
