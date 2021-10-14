@@ -1,5 +1,5 @@
-import { format } from 'morgan';
 import Role from '../models/Role';
+import User from '../models/User';
 
 export const checkRolesExisted = async ( request, response, next ) => {
 
@@ -25,4 +25,24 @@ export const checkRolesExisted = async ( request, response, next ) => {
 
     next();
 
+}
+
+export const checkDuplicateUsernameOrEmail = async ( request, response, next ) => {
+    let user = await User .findOne({ username: request .body .username });
+
+    // ! Verifica que EXISTA un usuario registrado con el username solicitado
+    if( user ) return response .status( 400 ) .json({
+        error: {
+            message: `There is already a user with this username!`
+        }
+    });
+
+    user = await User .findOne({ email: request .body .email });
+
+    // ! Verifica que EXISTA un usuario registrado con el email solicitado
+    if( user ) return response .status( 400 ) .json({
+        error: {
+            message: `There is already a user with this email!`
+        }
+    });
 }
